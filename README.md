@@ -25,4 +25,4 @@ Let's say you've just downloaded 15,000 tracks and you're really happy with with
 
 What can you do? Well if you have fast internet, like me, you start from scratch! 😊
 
-This script will convert the Streamrip downloads database to a .csv and then similarly to the above, will execute the Streamrip for each track. One day I will make this multithreaded as it currently works on a track by track basis, but that day is not today.
+This script will convert the Streamrip downloads database to a .csv and then similarly to the above, will execute Streamrip for each track it finds. One day I will make this multithreaded as it currently works on a track by track basis which is well below the Tidal limits, but that day is not today.
