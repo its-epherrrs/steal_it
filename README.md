@@ -4,8 +4,6 @@ This was primarily designed for Windows as unfortunately I'm stuck with a garbag
 
 Eventually I will update this script for MacOS but that will have to wait because I cannot be bothered to make something work for a system I don't own.
 
-The point of this script is to read Tidal URLs from a file in your %userprofile%, execute the Streamrip command for each of those URLs, process the downloaded files using Beets (I like to have my music reorganised by %albumartist% > %album% - %year%), then after you've opened up VirtualDJ and scanned your files in it will add the "recursive" flag to all folders so that you can easily browse files without having to go deep into nested folders which is a pain when you're trying only to use your decks and not touch the mouse/kb whilst DJ'ing.
-
 ## Setup
 
 You will need:
@@ -19,6 +17,12 @@ You will need:
 For this to work properly you also need a file in your %userprofile% area called urls (no extension) with each Tidal URL separated on a new line.
 
 There's probably bugs and other weirdness with this but it works well enough for me.
+
+## steal_it.py
+
+The point of this script is to read Tidal URLs from a "urls" file in your %userprofile%, execute the Streamrip command for each of those URLs, process the downloaded files using Beets (I like to have my music reorganised by %albumartist% > %album% - %year%), then after you've opened up VirtualDJ and scanned your files in (you need to do this bit manually) it will add the "recursive" flag to all folders so that you can easily browse files without having to go deep into nested folders which is a pain when you're trying only to use your decks and not touch the mouse/kb whilst DJ'ing.
+
+I am going to remove beets and instead use Mutagen to achieve the %albumartist% sorting as Tidal is pretty lame with how it stores tags, meaning that I need to write something which will get the text up to the first comma (i.e. primary artist) in the %artist% tag and then set the %albumartist% tag to that. Simple enough but I just haven't gotten around to it yet.
 
 ## steal_it_if_you_broke_it.py
 
