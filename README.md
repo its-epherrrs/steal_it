@@ -21,7 +21,7 @@ There's probably bugs and other weirdness with this but it works well enough for
 
 ## steal_it_if_you_broke_it.py
 
-Let's say you've just downloaded 15,000 tracks and you're really happy with with how your music is organised. Now let's say you just paid for Mixed In Key and Lexicon to get the best tags possible. Now let's say that both of those pieces of software are actually hot garbage and ruined your music collection with stupid cue points, awful key/energy tags, and other nonsense...
+Let's say you've just downloaded 15,000 tracks and you're really happy with with how your music is organised. Now let's say you've just paid for Mixed In Key and Lexicon to get the best tags possible. Now let's say that both of those pieces of software are actually hot garbage and ruined your music collection with stupid cue points, awful key/energy tags, and other nonsense...
 
 What can you do? Well if you have fast internet, like me, you start from scratch! 😊
 
