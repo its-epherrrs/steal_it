@@ -26,3 +26,9 @@ Let's say you've just downloaded 15,000 tracks and you're really happy with with
 What can you do? Well if you have fast internet, like me, you start from scratch! 😊
 
 This script will convert the Streamrip downloads database to a .csv and then similarly to the above, will execute Streamrip for each track it finds. One day I will make this multithreaded as it currently works on a track by track basis which is well below the Tidal limits, but that day is not today.
+
+## steal_it_from_maltine.py
+
+This script will scrape all available downloads from Maltine Records, a really cool Japanese web label that put out some crazy good music. I actually only wanted the remix album for Porter Robinson's Flicker but then my OCD got the better of me and here we are downloading everything they've got.
+
+This script is buggy as heck, there's a number of URLs that don't work because they don't follow the regular Maltine web design or they just don't have a download available. It'll grab most .zip files for you though!
