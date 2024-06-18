@@ -11,11 +11,12 @@ The point of this script is to read Tidal URLs from a file in your %userprofile%
 You will need:
  - Streamrip (https://github.com/nathom/streamrip)
  - Beets (https://beets.readthedocs.io/en/stable/)
-   - I will replace this with Mutagen (https://mutagen.readthedocs.io/en/latest/) at somepoint because Beets is dreadful and makes everything unecessarily difficult
+   - I will replace this with Mutagen (https://mutagen.readthedocs.io/en/latest/) at somepoint because Beets is dreadful and makes everything unecessarily difficult.
  - VirtualDJ (https://www.virtualdj.com/download/)
  - Python (but that's obvious)
+   - The only extra library needed is beautifulsoup4 (https://pypi.org/project/beautifulsoup4/) and only if you're using the steal_it_from_maltine.py script!
 
-For this to work properly you also need a file in your %userprofile% area called urls (no extension) with each Tidal URL separated on a new line
+For this to work properly you also need a file in your %userprofile% area called urls (no extension) with each Tidal URL separated on a new line.
 
 There's probably bugs and other weirdness with this but it works well enough for me.
 
