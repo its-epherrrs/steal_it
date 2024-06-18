@@ -11,7 +11,7 @@ The point of this script is to read Tidal URLs from a file in your %userprofile%
 You will need:
  - Streamrip (https://github.com/nathom/streamrip)
  - Beets (https://beets.readthedocs.io/en/stable/)
-   - I will replace this with Mutagen at somepoint because Beets is dreadful and makes everything unecessarily difficult
+   - I will replace this with Mutagen (https://mutagen.readthedocs.io/en/latest/) at somepoint because Beets is dreadful and makes everything unecessarily difficult
  - VirtualDJ (https://www.virtualdj.com/download/)
  - Python (but that's obvious)
 
