@@ -95,8 +95,10 @@ def move_flac_files(base_directory):
                     print(f"Error moving file {file_path}: {e}")
 
 def sanitize_folder_name(name):
-    # Replace characters that are invalid in Windows folder names
-    return re.sub(r'[<>:"/\\|?*]', '_', name)
+    # Replace characters that are invalid in Windows folder names and handle ".."
+    name = re.sub(r'[<>:"/\\|?*]', '_', name)
+    name = name.replace('..', '_')
+    return name
 
 def delete_empty_folders(base_directory):
     for root, dirs, _ in os.walk(base_directory, topdown=False):
@@ -120,33 +122,26 @@ def identify_compilation_albums(base_directory):
                     # Load FLAC file
                     audio = FLAC(file_path)
                     
-                    # Get album artist and album name
+                    # Get album artist, album name, and year
                     album_artist = audio.get("albumartist", ["Unknown Artist"])[0].strip()
                     album_name = audio.get("album", ["Unknown Album"])[0].strip()
+                    year = audio.get("year", ["Unknown Year"])[0].strip()
 
                     # Add file to compilation albums dictionary
-                    key = (album_name, )
+                    key = (album_name, year)
                     if key in compilation_albums:
-                        compilation_albums[key].append(file_path)
+                        compilation_albums[key].append((file_path, album_artist))
                     else:
-                        compilation_albums[key] = [file_path]
+                        compilation_albums[key] = [(file_path, album_artist)]
                     
                 except Exception as e:
                     print(f"Error processing file {file_path}: {e}")
 
     # Check for compilation albums
     for key, files in compilation_albums.items():
-        unique_album_artists = set()
-        for file_path in files:
-            try:
-                audio = FLAC(file_path)
-                album_artist = audio.get("albumartist", "Unknown Artist")[0].strip()
-                unique_album_artists.add(album_artist)
-            except Exception as e:
-                print(f"Error reading album artist for {file_path}: {e}")
-
-        if len(unique_album_artists) > 1:  # Multiple album artists for the same album name
-            print(f"Compilation Album Detected: {key[0]}")
+        unique_album_artists = set(album_artist for _, album_artist in files)
+        if len(unique_album_artists) > 1:  # Multiple album artists for the same album name and year
+            print(f"Compilation Album Detected: {key[0]} ({key[1]})")
             print("Album Artists:")
             for artist in unique_album_artists:
                 print(f"  - {artist}")
@@ -156,7 +151,7 @@ def identify_compilation_albums(base_directory):
                 user_input = input("Do you want to set album artist to 'Various Artists'? (Y/N): ").strip().upper()
                 if user_input == 'Y':
                     # Set album artist to "Various Artists"
-                    for file_path in files:
+                    for file_path, _ in files:
                         try:
                             audio = FLAC(file_path)
                             audio["albumartist"] = "Various Artists"
