@@ -136,11 +136,20 @@ def identify_compilation_albums(base_directory):
 
     # Check for compilation albums
     for key, files in compilation_albums.items():
-        if len(set(files)) > 1:  # Multiple artists for the same album name
+        unique_album_artists = set()
+        for file_path in files:
+            try:
+                audio = FLAC(file_path)
+                album_artist = audio.get("albumartist", "Unknown Artist")[0].strip()
+                unique_album_artists.add(album_artist)
+            except Exception as e:
+                print(f"Error reading album artist for {file_path}: {e}")
+
+        if len(unique_album_artists) > 1:  # Multiple album artists for the same album name
             print(f"Compilation Album Detected: {key[0]}")
-            print("Files:")
-            for file_path in files:
-                print(f"  - {file_path}")
+            print("Album Artists:")
+            for artist in unique_album_artists:
+                print(f"  - {artist}")
 
             # Prompt user for confirmation
             while True:
@@ -177,11 +186,11 @@ for root, _, files in os.walk(base_directory):
             file_path = os.path.join(root, filename)
             set_album_artist(file_path)
 
-# Rename FLAC files to "Track Number - Track Title"
-rename_flac_files(base_directory)
-
 # Identify and handle compilation albums
 identify_compilation_albums(base_directory)
+
+# Rename FLAC files to "Track Number - Track Title"
+rename_flac_files(base_directory)
 
 # Move FLAC files to "Album Artist > Album - Year" structure
 move_flac_files(base_directory)
